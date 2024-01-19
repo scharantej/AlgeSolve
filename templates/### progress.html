@@ -1,0 +1,40 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algebra Basics - Progress</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<h1>Algebra Basics</h1>
+<nav>
+<a href="/">Home</a>
+<a href="/lessons">Lessons</a>
+<a href="/quizzes">Quizzes</a>
+<a href="/progress">Progress</a>
+</nav>
+</header>
+<main>
+<section id="progress">
+<h2>Progress</h2>
+<ul>
+{% for progress in progress %}
+<li>
+<h4>{{ progress.lesson.title }}</h4>
+<p>Status: {% if progress.is_complete %}Complete{% else %}Incomplete{% endif %}</p>
+<p>Score: {{ progress.score }}</p>
+</li>
+{% endfor %}
+</ul>
+</section>
+</main>
+<footer>
+<p>Copyright 2023 Algebra Basics</p>
+</footer>
+</body>
+</html>
+
