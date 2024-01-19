@@ -1,0 +1,49 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algebra Basics - Lessons</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<h1>Algebra Basics</h1>
+<nav>
+<a href="/">Home</a>
+<a href="/lessons">Lessons</a>
+<a href="/quizzes">Quizzes</a>
+<a href="/progress">Progress</a>
+</nav>
+</header>
+<main>
+<section id="lessons">
+<h2>Lessons</h2>
+<ul>
+{% for lesson in lessons %}
+<li>
+<h4>{{ lesson.title }}</h4>
+<p>{{ lesson.content }}</p>
+{% if lesson.is_complete %}
+<button class="mark-complete" disabled>Mark as Complete</button>
+{% else %}
+<form action="/mark-lesson-complete" method="POST">
+<input type="hidden" name="lesson_id" value="{{ lesson.id }}">
+<button type="submit" class="mark-complete">Mark as Complete</button>
+</form>
+{% endif %}
+</li>
+{% endfor %}
+</ul>
+</section>
+</main>
+<footer>
+<p>Copyright 2023 Algebra Basics</p>
+</footer>
+</body>
+</html>
+
+
+
