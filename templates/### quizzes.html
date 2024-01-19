@@ -1,0 +1,52 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algebra Basics - Quizzes</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<h1>Algebra Basics</h1>
+<nav>
+<a href="/">Home</a>
+<a href="/lessons">Lessons</a>
+<a href="/quizzes">Quizzes</a>
+<a href="/progress">Progress</a>
+</nav>
+</header>
+<main>
+<section id="quizzes">
+<h2>Quizzes</h2>
+<ul>
+{% for quiz in quizzes %}
+<li>
+<h4>{{ quiz.title }}</h4>
+<form action="/submit-quiz" method="POST">
+<input type="hidden" name="quiz_id" value="{{ quiz.id }}">
+{% for question in quiz.questions %}
+<div class="question">
+<p>{{ question.question }}</p>
+<input type="radio" name="question-{{ question.id }}" value="{{ question.option1 }}"> {{ question.option1 }}
+<input type="radio" name="question-{{ question.id }}" value="{{ question.option2 }}"> {{ question.option2 }}
+<input type="radio" name="question-{{ question.id }}" value="{{ question.option3 }}"> {{ question.option3 }}
+<input type="radio" name="question-{{ question.id }}" value="{{ question.option4 }}"> {{ question.option4 }}
+</div>
+{% endfor %}
+<button type="submit" class="submit-quiz">Submit Quiz</button>
+</form>
+</li>
+{% endfor %}
+</ul>
+</section>
+</main>
+<footer>
+<p>Copyright 2023 Algebra Basics</p>
+</footer>
+</body>
+</html>
+
+
